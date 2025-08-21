@@ -1,0 +1,17 @@
+#Instalacao do CodeDeploy agent na EC2 instance:
+
+sudo yum update -y
+sudo yum install ruby -y
+sudo yum install wget -y
+cd /home/ec2-user
+wget https://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install
+chmod +x ./install
+sudo ./install auto
+sudo service codedeploy-agent status
+
+
+#Criar a sua aplicação, podemos dar esse comando com o aws cli
+~e:
+
+aws deploy create-application --application-name mywebapp
+aws deploy push --application-name mywebapp --s3-location s3://NAME/webapp.zip --ignore-hidden-files
